@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServerAndClient", "TcpServerAndClient\TcpServerAndClient.csproj", "{F07F76E8-9044-4684-8219-D0E8CBA28952}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F0F26440-7A9A-4A2B-949D-A7B35B6B7E53} = {F0F26440-7A9A-4A2B-949D-A7B35B6B7E53}
+		{4DE4DBDF-AA9F-411B-8297-9DCED589898C} = {4DE4DBDF-AA9F-411B-8297-9DCED589898C}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{F0F26440-7A9A-4A2B-949D-A7B35B6B7E53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{4DE4DBDF-AA9F-411B-8297-9DCED589898C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchAlgorithmsLib", "SearchAlgorithmsLib\SearchAlgorithmsLib.csproj", "{3A410550-D87A-4497-B9A1-4C6DCD2578CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeTester", "MazeTester\MazeTester.csproj", "{612E84EF-9AC7-41FC-A473-200C721C38EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F07F76E8-9044-4684-8219-D0E8CBA28952}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F07F76E8-9044-4684-8219-D0E8CBA28952}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F07F76E8-9044-4684-8219-D0E8CBA28952}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F07F76E8-9044-4684-8219-D0E8CBA28952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0F26440-7A9A-4A2B-949D-A7B35B6B7E53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0F26440-7A9A-4A2B-949D-A7B35B6B7E53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0F26440-7A9A-4A2B-949D-A7B35B6B7E53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0F26440-7A9A-4A2B-949D-A7B35B6B7E53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DE4DBDF-AA9F-411B-8297-9DCED589898C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DE4DBDF-AA9F-411B-8297-9DCED589898C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DE4DBDF-AA9F-411B-8297-9DCED589898C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DE4DBDF-AA9F-411B-8297-9DCED589898C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A410550-D87A-4497-B9A1-4C6DCD2578CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A410550-D87A-4497-B9A1-4C6DCD2578CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A410550-D87A-4497-B9A1-4C6DCD2578CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A410550-D87A-4497-B9A1-4C6DCD2578CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{612E84EF-9AC7-41FC-A473-200C721C38EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{612E84EF-9AC7-41FC-A473-200C721C38EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{612E84EF-9AC7-41FC-A473-200C721C38EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{612E84EF-9AC7-41FC-A473-200C721C38EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
