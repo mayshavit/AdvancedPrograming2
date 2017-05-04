@@ -181,7 +181,7 @@ namespace Server
         }
 
 
-        /// <summary>
+        /*/// <summary>
         /// Gets the game by gamer.
         /// </summary>
         /// <param name="gamer">The gamer.</param>
@@ -197,6 +197,19 @@ namespace Server
                 }
             }
             return null;
+        }*/
+
+        public MultiGame GetGameByGamer(ClientNotifier gamer)
+        {
+            foreach (MultiGame game in multiGames.Values)
+            {
+                if (game.IsAGamer(gamer))
+                {
+                    return game;
+                }
+            }
+
+            return null;
         }
 
         /*/// <summary>
@@ -207,5 +220,23 @@ namespace Server
         {
             games.Remove(name);
         }*/
+
+        public MultiGame GetMultiGame(string name)
+        {
+            if (multiGames.ContainsKey(name))
+            {
+                return multiGames[name];
+            }
+
+            return null;
+        }
+
+        public void RemoveMultiGame(string name)
+        {
+            if (multiGames.ContainsKey(name))
+            {
+                multiGames.Remove(name);
+            }
+        }
     }
 }

@@ -101,10 +101,13 @@ namespace Server
         /// <returns></returns>
         public Maze StartGame(string name, int rows, int cols, ClientNotifier gamer)
         {
-            Maze maze = GenerateMaze(name, rows, cols);
+            //Maze maze = GenerateMaze(name, rows, cols);
+            IMazeGenerator mazeGenerator = new DFSMazeGenerator();
+            Maze maze = mazeGenerator.Generate(rows, cols);
             MultiGame game = new MultiGame(name, maze, null);
             game.AddGamer(gamer);
-            controller.AddGame(name, game);
+            //controller.AddGame(name, game);
+            controller.AddMultiGame(name, game);
             return maze;
         }
 
@@ -116,7 +119,8 @@ namespace Server
         /// <returns></returns>
         public Maze JoinGame(string name, ClientNotifier gamer)
         {
-            MultiGame game = controller.GetGame(name);
+            //MultiGame game = controller.GetGame(name);
+            MultiGame game = controller.GetMultiGame(name);
             game.AddGamer(gamer);
             game.NotifyGamers();
 
@@ -148,10 +152,12 @@ namespace Server
         /// <returns></returns>
         public string CloseGame(string name, ClientNotifier gamer)
         {
-            MultiGame game = controller.GetGame(name);
+            //MultiGame game = controller.GetGame(name);
+            MultiGame game = controller.GetMultiGame(name);
             game.CloseGame();
 
-            controller.RemoveGame(name);
+            //controller.RemoveGame(name);
+            controller.RemoveMultiGame(name);
 
             return "close";
         }

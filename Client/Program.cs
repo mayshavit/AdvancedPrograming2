@@ -9,7 +9,6 @@ using System.IO;
 using System.Threading;
 using System.Configuration;
 
-//
 namespace Client
 {
     class Program
