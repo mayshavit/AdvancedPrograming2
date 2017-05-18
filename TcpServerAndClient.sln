@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchAlgorithmsLib", "Sear
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeTester", "MazeTester\MazeTester.csproj", "{612E84EF-9AC7-41FC-A473-200C721C38EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client2", "Client2\Client2.csproj", "{A95D1DB3-F28D-427C-92C3-B3A314329920}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{612E84EF-9AC7-41FC-A473-200C721C38EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{612E84EF-9AC7-41FC-A473-200C721C38EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{612E84EF-9AC7-41FC-A473-200C721C38EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A95D1DB3-F28D-427C-92C3-B3A314329920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A95D1DB3-F28D-427C-92C3-B3A314329920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A95D1DB3-F28D-427C-92C3-B3A314329920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A95D1DB3-F28D-427C-92C3-B3A314329920}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

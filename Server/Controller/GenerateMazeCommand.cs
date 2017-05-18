@@ -37,7 +37,8 @@ namespace Server
             Maze maze = model.GenerateMaze(name, rows, cols);
             client.ToSend = true;
             client.ChangeToClose = true;
-            return maze.ToJSON();
+            //return maze.ToJSON();
+            return maze.ToJSON() + "\n\n" + maze.ToString();
         }
     }
 }

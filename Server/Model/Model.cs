@@ -104,6 +104,7 @@ namespace Server
             //Maze maze = GenerateMaze(name, rows, cols);
             IMazeGenerator mazeGenerator = new DFSMazeGenerator();
             Maze maze = mazeGenerator.Generate(rows, cols);
+            maze.Name = name;
             MultiGame game = new MultiGame(name, maze, null);
             game.AddGamer(gamer);
             //controller.AddGame(name, game);
