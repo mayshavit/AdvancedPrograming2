@@ -1,0 +1,40 @@
+﻿<Window x:Class="ex2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ex2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Background="White">
+    <Canvas HorizontalAlignment="Left" Height="323" VerticalAlignment="Top" Width="515" Margin="0,0,0,-0.6">
+        <Button x:Name="SinglePlayerButton" Content="Single Player" Canvas.Left="197" Canvas.Top="110" Height="32" Width="110" HorizontalAlignment="Right" FontWeight="Bold" BorderBrush="#FF070038" Foreground="#FF120B86" OpacityMask="Black" RenderTransformOrigin="0.5,0.5">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FF77C8C2" Offset="1"/>
+                    <GradientStop Color="#FFD8FFFC" Offset="0.495"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="MultiPlayerButton" Content="Multi Player" Canvas.Left="197" Canvas.Top="158" Height="32" Width="110" HorizontalAlignment="Right" FontWeight="Bold" BorderBrush="#FF070038" Foreground="#FF120B86" OpacityMask="Black" RenderTransformOrigin="0.5,0.5">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FF77C8C2" Offset="1"/>
+                    <GradientStop Color="#FFD8FFFC" Offset="0.495"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="MultiPlayerButton_Copy" Content="Settings" Canvas.Left="197" Canvas.Top="206" Height="32" Width="110" HorizontalAlignment="Right" FontWeight="Bold" BorderBrush="#FF070038" Foreground="#FF120B86" OpacityMask="Black" RenderTransformOrigin="0.5,0.5">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FF77C8C2" Offset="1"/>
+                    <GradientStop Color="#FFD8FFFC" Offset="0.495"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+    </Canvas>
+
+</Window>
