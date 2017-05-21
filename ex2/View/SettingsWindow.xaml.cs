@@ -10,26 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ex2
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SettingsWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SettingsWindow : Window
     {
-        public MainWindow()
+        private SettingsViewModel vm;
+
+        public SettingsWindow()
         {
             InitializeComponent();
-        }
-
-        private void SettingsModel_Click(object sender, RoutedEventArgs e)
-        {
-            SettingsWindow win = new SettingsWindow();
-            win.Show();
-            this.Hide();
+            vm = new SettingsViewModel(new ApplicationSettingsModel());
+            this.DataContext = vm;
         }
     }
 }
