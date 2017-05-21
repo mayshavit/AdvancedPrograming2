@@ -15,5 +15,5 @@ namespace ex2
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
-    }//
+    }//////
 }
