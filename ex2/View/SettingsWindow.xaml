@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ex2"
         mc:Ignorable="d"
-        Title="Settings" Height="300" Width="300">
+        Title="Settings" Height="300" Width="300"
+        Closing="Window_Closing">
 
     <Grid TextBlock.FontSize="14">
         <Grid.RowDefinitions>
@@ -20,11 +21,35 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Padding" Value="3"/>
+                <Setter Property="Margin" Value="3"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="Padding" Value="3"/>
+                <Setter Property="Margin" Value="3"/>
+            </Style>
+            <Style TargetType="ComboBox">
+                <Setter Property="Padding" Value="3"/>
+                <Setter Property="Margin" Value="3"/>
+            </Style>
+        </Grid.Resources>
         <TextBlock>Server IP:</TextBlock>
         <TextBox x:Name="txtIP" Grid.Column="1" Text="{Binding ServerIP}"></TextBox>
         <TextBlock Grid.Row="1">Server Port:</TextBlock>
         <TextBox x:Name="txtPort" Grid.Row="1" Grid.Column="2" Text="{Binding ServerPort}"></TextBox>
         <TextBlock Grid.Row="2">Maze rows:</TextBlock>
+        <TextBox x:Name="txtRows" Grid.Row="2" Grid.Column="2" Text="{Binding MazeRows}"/>
+        <TextBlock Grid.Row="3">Maze columns:</TextBlock>
+        <TextBox x:Name="txtCols" Grid.Row="3" Grid.Column="2" Text="{Binding MazeCols}"></TextBox>
+        <TextBlock Grid.Row="4">Search algorithm:</TextBlock>
+        <ComboBox x:Name="cboSearchAlgo" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" SelectedIndex="{Binding SearchAlgorithm}" IsEditable="False" Margin="3.4,3.4,0,3.2" Width="60">
+            <ComboBoxItem>BFS</ComboBoxItem>
+            <ComboBoxItem>DFS</ComboBoxItem>
+        </ComboBox>
+        <Button x:Name="btnOK" Content="OK" Width="60" Grid.Row="5" Margin="52,23.8,9.6,-23.8" Height="24" VerticalAlignment="Top" Click="btnOK_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" Width="60" Grid.Row="5" Margin="20.4,23.8,91.6,-23.8" Grid.Column="1" Click="btnCancel_Click"/>
 
     </Grid>
 </Window>
