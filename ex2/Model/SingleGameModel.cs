@@ -27,8 +27,6 @@ namespace ex2
         {
             string ip = Properties.Settings.Default.ServerIP;
             int port = Properties.Settings.Default.ServerPort;
-
-            IPEndPoint ep = new IPEndPoint(ip, port);
         }
     }
 }
