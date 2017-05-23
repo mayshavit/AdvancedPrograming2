@@ -13,29 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ex2
+namespace ex2.View.MazeGUI.Controls
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MazeBoard.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MazeBoard : UserControl
     {
-        public MainWindow()
+        public MazeBoard()
         {
             InitializeComponent();
         }
 
-        private void SettingsModel_Click(object sender, RoutedEventArgs e)
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            SettingsWindow win = new SettingsWindow();
-            win.Show();
-            this.Hide();
-        }
 
-        private void SinglePlayerButton_Click(object sender, RoutedEventArgs e)
-        {
-            SinglePlayerMenu menu = new SinglePlayerMenu();
-            menu.ShowDialog();
         }
     }
 }

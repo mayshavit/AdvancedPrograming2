@@ -32,7 +32,9 @@ namespace ex2
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-
+            //string s = txtMazeName.Text;
+            View.MazeGUI.SinglePlayerWindow window = new View.MazeGUI.SinglePlayerWindow();
+            window.CreateModel(txtMazeName.Text, int.Parse(txtRows.Text), int.Parse(txtCols.Text));
         }
     }
 }
