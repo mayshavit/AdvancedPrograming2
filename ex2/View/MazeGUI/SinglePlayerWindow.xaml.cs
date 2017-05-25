@@ -19,16 +19,29 @@ namespace ex2.View.MazeGUI
     /// </summary>
     public partial class SinglePlayerWindow : Window
     {
-        private SingleGameModel model;
+        private SingleGameViewModel vm;
 
         public SinglePlayerWindow()
         {
             InitializeComponent();
+            //this.DataContext = vm;
+            vm = new SingleGameViewModel(new SingleGameModel());
+            this.DataContext = vm;
         }
 
-        public void CreateModel(string name, int rows, int cols)
+        //public void CreateModel(string name, int rows, int cols)
+        public void Update(string name, int rows, int cols)
         {
-            model = new SingleGameModel(name, rows, cols);
+            vm.MazeName = name;
+            vm.Rows = rows;
+            vm.Cols = cols;
+            vm.StartGame();
+
+            //mazeBoard.DrawMaze();
+            mazeBoard.DrawMaze(vm.Rows, vm.Cols, vm.Maze);
+            //model = new SingleGameModel(name, rows, cols);
+            //vm = new SingleGameViewModel(new SingleGameModel(name, rows, cols));
+
         }
     }
 }

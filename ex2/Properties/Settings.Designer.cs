@@ -82,5 +82,52 @@ namespace ex2.Properties {
                 this["SearchAlgorithm"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\"maze\"")]
+        public string MazeName {
+            get {
+                return ((string)(this["MazeName"]));
+            }
+            set {
+                this["MazeName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::MazeLib.Maze Maze {
+            get {
+                return ((global::MazeLib.Maze)(this["Maze"]));
+            }
+            set {
+                this["Maze"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int Rows {
+            get {
+                return ((int)(this["Rows"]));
+            }
+            set {
+                this["Rows"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int Cols {
+            get {
+                return ((int)(this["Cols"]));
+            }
+            set {
+                this["Cols"] = value;
+            }
+        }
     }
 }

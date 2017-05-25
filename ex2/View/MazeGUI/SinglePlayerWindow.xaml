@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:ex2.View.MazeGUI.Controls"
         mc:Ignorable="d" Height="650" Width="600"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Title="hghg">
 
     <Canvas>
-        <Button x:Name="btnRestartGame" Width="80" Canvas.Left="149" Canvas.Top="35">Restart game</Button>
-        <Button x:Name="btnSolveMaze" Width="80" Canvas.Left="284" Canvas.Top="35">Solve maze</Button>
-        <Button x:Name="btnMainMenu" Width="80" Canvas.Left="420" Canvas.Top="35">Main menu</Button>
+        <Button x:Name="btnRestartGame" Width="80" Canvas.Left="104" Canvas.Top="35">Restart game</Button>
+        <Button x:Name="btnSolveMaze" Width="80" Canvas.Left="255" Canvas.Top="35">Solve maze</Button>
+        <Button x:Name="btnMainMenu" Width="80" Canvas.Left="401" Canvas.Top="35">Main menu</Button>
 
+        <controls:MazeBoard x:Name="mazeBoard" Canvas.Left="30" Canvas.Top="82" Height="530" Width="530"/>
 
     </Canvas>
 </Window>

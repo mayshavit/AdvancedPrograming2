@@ -34,7 +34,10 @@ namespace ex2
         {
             //string s = txtMazeName.Text;
             View.MazeGUI.SinglePlayerWindow window = new View.MazeGUI.SinglePlayerWindow();
-            window.CreateModel(txtMazeName.Text, int.Parse(txtRows.Text), int.Parse(txtCols.Text));
+            //window.CreateModel(txtMazeName.Text, int.Parse(txtRows.Text), int.Parse(txtCols.Text));
+            window.Update(txtMazeName.Text, int.Parse(txtRows.Text), int.Parse(txtCols.Text));
+            window.Show();
+            this.Hide();
         }
     }
 }

@@ -36,6 +36,7 @@ namespace ex2
         {
             SinglePlayerMenu menu = new SinglePlayerMenu();
             menu.ShowDialog();
+            this.Hide();
         }
     }
 }

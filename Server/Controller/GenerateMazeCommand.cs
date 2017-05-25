@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MazeGeneratorLib;
 using MazeLib;
+using Newtonsoft.Json;
 
 namespace Server
 {
@@ -38,7 +39,9 @@ namespace Server
             client.ToSend = true;
             client.ChangeToClose = true;
             //return maze.ToJSON();
-            return maze.ToJSON() + "\n\n" + maze.ToString();
+            return maze.ToJSON();
+            //return JsonConvert.SerializeObject(maze);
+            //return maze.ToString();
         }
     }
 }

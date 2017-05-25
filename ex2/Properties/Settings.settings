@@ -17,5 +17,17 @@
     <Setting Name="SearchAlgorithm" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="MazeName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">"maze"</Value>
+    </Setting>
+    <Setting Name="Maze" Type="MazeLib.Maze" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Rows" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="Cols" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
