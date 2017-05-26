@@ -27,6 +27,7 @@ namespace ex2.View.MazeGUI
             //this.DataContext = vm;
             vm = new SingleGameViewModel(new SingleGameModel());
             this.DataContext = vm;
+            this.KeyDown += mazeBoard.UserControl_KeyDown;
         }
 
         //public void CreateModel(string name, int rows, int cols)
@@ -38,10 +39,16 @@ namespace ex2.View.MazeGUI
             vm.StartGame();
 
             //mazeBoard.DrawMaze();
-            mazeBoard.DrawMaze(vm.Rows, vm.Cols, vm.Maze);
+            mazeBoard.DrawMaze(vm.Rows, vm.Cols, vm.Maze, vm.InitialPos, vm.GoalPos);
             //model = new SingleGameModel(name, rows, cols);
             //vm = new SingleGameViewModel(new SingleGameModel(name, rows, cols));
 
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Window window = Application.Current.MainWindow;
+            window.Close();
         }
     }
 }

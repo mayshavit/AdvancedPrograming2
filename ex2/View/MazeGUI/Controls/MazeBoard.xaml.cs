@@ -21,6 +21,24 @@ namespace ex2.View.MazeGUI.Controls
     /// </summary>
     public partial class MazeBoard : UserControl
     {
+        private Position playerPos;
+        private Rectangle pRectangle;
+
+        delegate void move();
+        event move PlayerMoved;
+
+        public Position PlayerPos
+        {
+            get { return playerPos; }
+            set { playerPos = value; }
+        }
+
+        /*    public Rectangle PlayerPos
+        {
+            get { return playerPos; }
+            set { playerPos = value; }
+        }*/
+
         public MazeBoard()
         {
             InitializeComponent();
@@ -84,14 +102,17 @@ namespace ex2.View.MazeGUI.Controls
 
 
         //public void DrawMaze()
-        public void DrawMaze(int rows, int cols, Maze maze)
+        public void DrawMaze(int rows, int cols, Maze maze, Position initialPos, Position goalPos)
         {
+            Maze = maze;
+            Rows = rows;
+            Cols = cols;
             //int rows = Rows;
             //int cols = Cols;
             //Maze maze = Maze;
 
-            double width = 370 / cols;
-            double height = 370 / rows;
+            double width = 450.00 / cols - 1;
+            double height = 450.00 / rows - 1;
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < cols; j++)
@@ -106,16 +127,114 @@ namespace ex2.View.MazeGUI.Controls
                         rectangle.Fill = new SolidColorBrush(Color.FromRgb(0, 0, 0));
                     }
 
+                    /*if ((initialPos.Row == i) && (initialPos.Col == j))
+                    {
+                        
+                    }*/
+
+                    /*if ((goalPos.Row == i) && (goalPos.Col == j))
+                    {
+                    }*/
+
+                    UpdateRectangle(rectangle, Rows - i - 1, j, width, height);
+                }
+            }
+
+            Rectangle initial = new Rectangle();
+            ImageSource srcImage1 = new BitmapImage(new Uri(System.AppDomain.CurrentDomain.BaseDirectory + @"/../../../../Images/minion.jpg"));
+            initial.Fill = new ImageBrush(srcImage1);
+            UpdateRectangle(initial, Rows - initialPos.Row - 1, initialPos.Col, width, height);
+            playerPos = initialPos;
+            pRectangle = initial;
+
+            Rectangle goal = new Rectangle();
+            ImageSource srcImage2 = new BitmapImage(new Uri(System.AppDomain.CurrentDomain.BaseDirectory + @"/../../../../Images/banana.jpg"));
+            goal.Fill = new ImageBrush(srcImage2);
+            UpdateRectangle(goal, Rows - goalPos.Row - 1, goalPos.Col, width, height);
+
+
+        }
+
+        private void UpdateRectangle(Rectangle rectangle, int i, int j, double width, double height)
+        {
+
                     rectangle.Width = width;
                     rectangle.Height = height;
-                    Canvas.SetTop(rectangle, i+i*width);
-                    Canvas.SetLeft(rectangle, j+j*height);
+                    Canvas.SetTop(rectangle, i+i*height);
+                    Canvas.SetLeft(rectangle, j+j*width);
 
                     myCanvas.Children.Add(rectangle);
-                }
+        }
+        public void UserControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key key = e.Key;
+            string str = key.ToString().ToLower();
+            int row = playerPos.Row; //(int)Canvas.GetTop(playerPos);
+            int col = playerPos.Col; //(int)Canvas.GetLeft(playerPos);
+            int topRow = row;
+
+            switch (str)
+            {
+                case "left":
+                    col--;
+                    break;
+
+                case "right":
+                    col++;
+                    break;
+
+                case "up":
+                    row--;
+                    topRow++;
+                    break;
+
+                case "down":
+                    row++;
+                    topRow--;
+                    break;
+
+                default:
+                    break;
+            }
+
+            if (!IsAWall(topRow, col))
+            {
+                Position p = new Position();
+                p.Row = topRow; //row;
+                p.Col = col;
+                playerPos = p;
+                //row = Rows - row - 1;
+                topRow = Rows - topRow - 1;
+
+
+                Canvas.SetTop(pRectangle, topRow + topRow * (450.00 / Cols - 1));
+                Canvas.SetLeft(pRectangle, col + col * (450.00 / Rows - 1));
+
+            }
+
+            if (playerPos.Equals(Maze.GoalPos))
+            {
 
             }
         }
 
+        private bool IsAWall(int row, int col)
+        {
+            if ((row < 0) || (col < 0) || (row > Rows - 1) || (col > Cols - 1))
+            {
+                return true;
+            }
+            if (Maze[row, col] == CellType.Wall)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public void PlayerWon()
+        {
+            
+        }
     }
 }
