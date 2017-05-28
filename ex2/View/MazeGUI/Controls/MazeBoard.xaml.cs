@@ -29,7 +29,9 @@ namespace ex2.View.MazeGUI.Controls
         private Maze maze;
 
         delegate void move();
-        event move PlayerMoved;
+        event move PlayerMoved1;
+            
+        public event EventHandler<PlayerMovedEventArgs> PlayerMoved;
 
         public Position PlayerPos
         {
@@ -178,6 +180,14 @@ namespace ex2.View.MazeGUI.Controls
             string str = key.ToString().ToLower();
 
             MovePlayer(str);
+
+            if (playerPos.Equals(maze.GoalPos))
+            {
+                //System.Windows.Forms.MessageBox mb;
+                PlayerWon();
+            }
+
+            PlayerMoved?.Invoke(this, new PlayerMovedEventArgs(str));
         }
 
         private bool IsAWall(int row, int col)
@@ -241,11 +251,6 @@ namespace ex2.View.MazeGUI.Controls
 
             }
 
-            if (playerPos.Equals(maze.GoalPos))
-            {
-                //System.Windows.Forms.MessageBox mb;
-                PlayerWon();
-            }
         }
 
         public void PlayerWon()

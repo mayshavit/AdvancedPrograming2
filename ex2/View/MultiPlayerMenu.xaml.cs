@@ -51,9 +51,9 @@ namespace ex2
 
             List<string> names = JsonConvert.DeserializeObject<List<string>>(json);
 
- 
+            games.Clear();
 
-            for (int i = 0; i < games.Count; i++)
+            for (int i = 0; i < names.Count; i++)
             {
                 games.Add(new GameName(names[i]));
             }
@@ -73,7 +73,7 @@ namespace ex2
         private void btnJoin_Click(object sender, RoutedEventArgs e)
         {
             View.MazeGUI.MultiPlayerWindow window = new View.MazeGUI.MultiPlayerWindow();
-            window.Update(game, 0, 0, false);
+            window.Update(listOfMazes.Text, 0, 0, false);
             window.Show();
             this.Hide();
         }

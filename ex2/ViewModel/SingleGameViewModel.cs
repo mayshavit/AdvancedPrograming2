@@ -19,9 +19,12 @@ namespace ex2
         private Position initialPos;
         private Position goalPos;
 
+        public event EventHandler<PlayerMovedEventArgs> MoveOtherPlayer;
+
         public SingleGameViewModel(GameModel model)
         {
             this.model = model;
+            this.model.OtherPlayerMoved += RaiseEvent;
         }
 
         public Maze Maze
@@ -150,13 +153,30 @@ namespace ex2
         {
             string json = model.JoinGame();
 
-            Maze maze = JsonConvert.DeserializeObject<Maze>(json);
+            Maze maze = Maze.FromJSON(json); //JsonConvert.DeserializeObject<Maze>(json);
 
             Maze = maze;
             Rows = maze.Rows;
             Cols = maze.Cols;
             InitialPos = maze.InitialPos;
             GoalPos = maze.GoalPos;
+        }
+
+        public void Move(string move)
+        {
+            model.WriteMove(move);
+        }
+
+        private void RaiseEvent(object sender, PlayerMovedEventArgs e)
+        {
+            JMove jMove = JsonConvert.DeserializeObject<JMove>(e.Move);
+
+            MoveOtherPlayer?.Invoke(this, new PlayerMovedEventArgs(jMove.Direction));
+        }
+
+        public void CloseGame()
+        {
+
         }
     }
 }

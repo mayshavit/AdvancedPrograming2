@@ -14,6 +14,9 @@ namespace ex2
         private TcpClient player;
         private BinaryReader reader;
         private BinaryWriter writer;
+        private bool closeConnection;
+
+
 
         public void ConnectToServer(string ip, int port)
         {
@@ -24,14 +27,15 @@ namespace ex2
             NetworkStream stream = player.GetStream();
             reader = new BinaryReader(stream);
             writer = new BinaryWriter(stream);
+            closeConnection = false;
         }
 
-        protected void WriteData(string data)
+        public void WriteData(string data)
         {
             writer.Write(data);
         }
 
-        protected string ReadData()
+        public string ReadData()
         {
             return reader.ReadString();
         }
@@ -40,6 +44,7 @@ namespace ex2
         {
             player.Close();
         }
+
 
         public abstract string ReadAndWriteToServer(string data);
     }

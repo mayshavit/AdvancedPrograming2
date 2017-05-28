@@ -35,4 +35,14 @@ namespace ex2
             Connected = connected;
         }
     }
+
+    public class PlayerMovedEventArgs : EventArgs
+    {
+        public string Move { get; set; }
+
+        public PlayerMovedEventArgs(string move)
+        {
+            Move = move;
+        }
+    }
 }

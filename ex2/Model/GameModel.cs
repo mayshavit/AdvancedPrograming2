@@ -19,7 +19,8 @@ namespace ex2
         //private int cols;
         private SinglePlayer player1;
         private SinglePlayer player2;
-        private bool closeConnection;
+
+        public event EventHandler<PlayerMovedEventArgs> OtherPlayerMoved;
 
         public Maze Maze
         {
@@ -58,7 +59,7 @@ namespace ex2
         {
             player1 = new SinglePlayer();
             player2 = new SinglePlayer();
-            closeConnection = false;
+            //closeConnection = false;
         }
 
         private void ManageConnection()
@@ -114,6 +115,8 @@ namespace ex2
 
             string json = player1.ReadAndWriteToServer(data);
 
+            this.ReadMessages();
+
             return json;
         }
 
@@ -125,7 +128,41 @@ namespace ex2
 
             string json = player1.ReadAndWriteToServer(data);
 
+            this.ReadMessages();
+
             return json;
+        }
+
+        public void WriteMove(string move)
+        {
+            string data = "play " + move;
+
+            player1.WriteData(data);
+        }
+
+        public void ReadMessages()
+        {
+            new Task(() =>
+            {
+                string s;
+
+                while (true)
+                {
+                    s = player1.ReadData();
+                    if (s == "close")
+                    {
+                        break;
+                    }
+                    OtherPlayerMoved?.Invoke(this, new PlayerMovedEventArgs(s));
+                }
+            }).Start();
+        }
+
+        public void CloseGame()
+        {
+            string data = "close " + MazeName;
+
+            player1.WriteData(data);
         }
     }
 }

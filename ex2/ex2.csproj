@@ -98,6 +98,7 @@
     <Compile Include="Model\GameModel.cs" />
     <Compile Include="Model\SinglePlayer.cs" />
     <Compile Include="ViewModel\GameMenuViewModel.cs" />
+    <Compile Include="ViewModel\JMove.cs" />
     <Compile Include="ViewModel\JSolution.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\SingleGameViewModel.cs" />

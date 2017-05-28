@@ -28,6 +28,8 @@ namespace ex2.View.MazeGUI
             vm = new SingleGameViewModel(new GameModel());
             this.DataContext = vm;
             this.KeyDown += myBoard.UserControl_KeyDown;
+            myBoard.PlayerMoved += WriteMoveToServer;
+            vm.MoveOtherPlayer += MoveOtherPlayer;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -60,6 +62,16 @@ namespace ex2.View.MazeGUI
         {
 
         }*/
+
+        private void WriteMoveToServer(object sender, PlayerMovedEventArgs e)
+        {
+            vm.Move(e.Move);
+        }
+
+        private void MoveOtherPlayer(object sender, PlayerMovedEventArgs e)
+        {
+            otherBoard.MovePlayer(e.Move);
+        }
 
     }
 }
