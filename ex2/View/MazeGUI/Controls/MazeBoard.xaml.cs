@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MazeLib;
+//using System.Windows.Forms;
 
 namespace ex2.View.MazeGUI.Controls
 {
@@ -23,6 +24,9 @@ namespace ex2.View.MazeGUI.Controls
     {
         private Position playerPos;
         private Rectangle pRectangle;
+        private int rows;
+        private int cols;
+        private Maze maze;
 
         delegate void move();
         event move PlayerMoved;
@@ -105,8 +109,11 @@ namespace ex2.View.MazeGUI.Controls
         public void DrawMaze(int rows, int cols, Maze maze, Position initialPos, Position goalPos)
         {
             Maze = maze;
+            this.maze = maze;
             Rows = rows;
+            this.rows = rows;
             Cols = cols;
+            this.cols = cols;
             //int rows = Rows;
             //int cols = Cols;
             //Maze maze = Maze;
@@ -141,14 +148,14 @@ namespace ex2.View.MazeGUI.Controls
             }
 
             Rectangle initial = new Rectangle();
-            ImageSource srcImage1 = new BitmapImage(new Uri(System.AppDomain.CurrentDomain.BaseDirectory + @"/../../../../Images/minion.jpg"));
+            ImageSource srcImage1 = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + @"/../../../../Images/minion.jpg"));
             initial.Fill = new ImageBrush(srcImage1);
             UpdateRectangle(initial, Rows - initialPos.Row - 1, initialPos.Col, width, height);
             playerPos = initialPos;
             pRectangle = initial;
 
             Rectangle goal = new Rectangle();
-            ImageSource srcImage2 = new BitmapImage(new Uri(System.AppDomain.CurrentDomain.BaseDirectory + @"/../../../../Images/banana.jpg"));
+            ImageSource srcImage2 = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + @"/../../../../Images/banana.jpg"));
             goal.Fill = new ImageBrush(srcImage2);
             UpdateRectangle(goal, Rows - goalPos.Row - 1, goalPos.Col, width, height);
 
@@ -169,6 +176,26 @@ namespace ex2.View.MazeGUI.Controls
         {
             Key key = e.Key;
             string str = key.ToString().ToLower();
+
+            MovePlayer(str);
+        }
+
+        private bool IsAWall(int row, int col)
+        {
+            if ((row < 0) || (col < 0) || (row > rows - 1) || (col > cols - 1))
+            {
+                return true;
+            }
+            if (maze[row, col] == CellType.Wall)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public void MovePlayer(string str)
+        {
             int row = playerPos.Row; //(int)Canvas.GetTop(playerPos);
             int col = playerPos.Col; //(int)Canvas.GetLeft(playerPos);
             int topRow = row;
@@ -204,37 +231,38 @@ namespace ex2.View.MazeGUI.Controls
                 p.Col = col;
                 playerPos = p;
                 //row = Rows - row - 1;
-                topRow = Rows - topRow - 1;
+                topRow = rows - topRow - 1;
 
-
-                Canvas.SetTop(pRectangle, topRow + topRow * (450.00 / Cols - 1));
-                Canvas.SetLeft(pRectangle, col + col * (450.00 / Rows - 1));
+                this.Dispatcher.Invoke(() =>
+                {
+                    Canvas.SetTop(pRectangle, topRow + topRow * (450.00 / rows - 1));
+                    Canvas.SetLeft(pRectangle, col + col * (450.00 / cols - 1));
+                });
 
             }
 
-            if (playerPos.Equals(Maze.GoalPos))
+            if (playerPos.Equals(maze.GoalPos))
             {
-
+                //System.Windows.Forms.MessageBox mb;
+                PlayerWon();
             }
-        }
-
-        private bool IsAWall(int row, int col)
-        {
-            if ((row < 0) || (col < 0) || (row > Rows - 1) || (col > Cols - 1))
-            {
-                return true;
-            }
-            if (Maze[row, col] == CellType.Wall)
-            {
-                return true;
-            }
-
-            return false;
         }
 
         public void PlayerWon()
         {
-            
+            MessageBox.Show("You Won!!!! :-)", "Winning", MessageBoxButton.OK);
+        }
+
+        public void RestartGame()
+        {
+            playerPos = Maze.InitialPos;
+
+            //int row = Rows - playerPos.Row - 1;
+            int row = this.rows - playerPos.Row - 1;
+            int col = playerPos.Col;
+
+            Canvas.SetTop(pRectangle, row + row * (450.00 / Rows - 1));
+            Canvas.SetLeft(pRectangle, col + col * (450.00 / Cols - 1));
         }
     }
 }

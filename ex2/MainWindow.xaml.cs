@@ -38,5 +38,12 @@ namespace ex2
             menu.ShowDialog();
             this.Hide();
         }
+
+        private void MultiPlayerButton_Click(object sender, RoutedEventArgs e)
+        {
+            MultiPlayerMenu menu = new MultiPlayerMenu();
+            menu.ShowDialog();
+            this.Hide();
+        }
     }
 }

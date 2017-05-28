@@ -11,13 +11,15 @@ using System.Windows;
 
 namespace ex2
 {
-    class SingleGameModel
+    class GameModel
     {
         //private Maze maze;
         //private string name;
         //private int rows;
         //private int cols;
-        private SinglePlayer player;
+        private SinglePlayer player1;
+        private SinglePlayer player2;
+        private bool closeConnection;
 
         public Maze Maze
         {
@@ -44,7 +46,7 @@ namespace ex2
         }
 
 
-        /*public SingleGameModel(string name2, int rows2, int cols2)
+        /*public GameModel(string name2, int rows2, int cols2)
         {
             name = name2;
             rows = rows2;
@@ -52,9 +54,11 @@ namespace ex2
             player = new SinglePlayer();
         }*/
 
-        public SingleGameModel()
+        public GameModel()
         {
-            player = new SinglePlayer();
+            player1 = new SinglePlayer();
+            player2 = new SinglePlayer();
+            closeConnection = false;
         }
 
         private void ManageConnection()
@@ -62,7 +66,7 @@ namespace ex2
             string ip = Properties.Settings.Default.ServerIP;
             int port = Properties.Settings.Default.ServerPort;
 
-            player.ConnectToServer(ip, port);
+            player1.ConnectToServer(ip, port);
         }
 
         //public void GenerateMaze()
@@ -72,11 +76,56 @@ namespace ex2
 
             ManageConnection();
 
-            string json = player.ReadAndWriteToServer(data);
+            string json = player1.ReadAndWriteToServer(data);
             //maze = JsonConvert.DeserializeObject<Maze>(json);
             //MazeName = maze.Name;
+            player1.CloseConnection();
             return json;
         }
 
+        public string SolveMaze()
+        {
+            string data = "solve " + MazeName + " " + Properties.Settings.Default.SearchAlgorithm.ToString();
+
+            ManageConnection();
+
+            string json = player1.ReadAndWriteToServer(data);
+            player1.CloseConnection();
+            return json;
+        }
+
+        public string ListOfMazes()
+        {
+            string data = "list";
+
+            ManageConnection();
+
+            string json = player1.ReadAndWriteToServer(data);
+            player1.CloseConnection();
+
+            return json;
+        }
+
+        public string StartGame()
+        {
+            string data = "start " + MazeName + " " + Rows.ToString() + " " + Cols.ToString();
+
+            ManageConnection();
+
+            string json = player1.ReadAndWriteToServer(data);
+
+            return json;
+        }
+
+        public string JoinGame()
+        {
+            string data = "join " + MazeName;
+
+            ManageConnection();
+
+            string json = player1.ReadAndWriteToServer(data);
+
+            return json;
+        }
     }
 }

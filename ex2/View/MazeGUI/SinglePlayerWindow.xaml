@@ -9,9 +9,9 @@
         Closing="Window_Closing">
 
     <Canvas>
-        <Button x:Name="btnRestartGame" Width="80" Canvas.Left="104" Canvas.Top="35">Restart game</Button>
-        <Button x:Name="btnSolveMaze" Width="80" Canvas.Left="255" Canvas.Top="35">Solve maze</Button>
-        <Button x:Name="btnMainMenu" Width="80" Canvas.Left="401" Canvas.Top="35">Main menu</Button>
+        <Button x:Name="btnRestartGame" Width="80" Canvas.Left="104" Canvas.Top="35" Click="btnRestartGame_Click">Restart game</Button>
+        <Button x:Name="btnSolveMaze" Width="80" Canvas.Left="255" Canvas.Top="35" Click="btnSolveMaze_Click">Solve maze</Button>
+        <Button x:Name="btnMainMenu" Width="80" Canvas.Left="401" Canvas.Top="35" Click="btnMainMenu_Click">Main menu</Button>
 
         <controls:MazeBoard x:Name="mazeBoard" Canvas.Left="67" Canvas.Top="92" Height="450" Width="450"/>
 

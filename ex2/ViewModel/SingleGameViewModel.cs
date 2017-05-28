@@ -11,7 +11,7 @@ namespace ex2
 {
     class SingleGameViewModel : ViewModel
     {
-        private SingleGameModel model;
+        private GameModel model;
         private Maze maze;
         private string name;
         private int rows;
@@ -19,7 +19,7 @@ namespace ex2
         private Position initialPos;
         private Position goalPos;
 
-        public SingleGameViewModel(SingleGameModel model)
+        public SingleGameViewModel(GameModel model)
         {
             this.model = model;
         }
@@ -84,9 +84,18 @@ namespace ex2
             set { goalPos = value; }
         }
 
-        public void StartGame()
+        public void StartGame(bool multi)
         {
-            string json = model.GenerateMaze(name, rows, cols);
+            string json;
+            if (!multi)
+            {
+                json = model.GenerateMaze(name, rows, cols);
+            }
+            else
+            {
+                json = model.StartGame();
+            }
+
             //maze = JsonConvert.DeserializeObject<Maze>(json);
             //Maze = Json.JsonParser.Deserialize(json);
             //Maze = JsonParser.Deserialize<Maze>(json);
@@ -102,5 +111,52 @@ namespace ex2
             rows = rows2;
             cols = cols2;
         }*/
+
+        public List<string> SolveGame()
+        {
+            List<string> directionList = new List<string>();
+            string json = model.SolveMaze();
+
+            JSolution solution = JsonConvert.DeserializeObject<JSolution>(json);
+
+            int length = solution.Solution.Length;
+
+            for (int i = 0; i < length; i++)
+            {
+                directionList.Add(DirectionString(solution.Solution[i]));
+            }
+
+            return directionList;
+        }
+
+        private string DirectionString(char c)
+        {
+            switch (c)
+            {
+                case '0':
+                    return "left";
+                case '1':
+                    return "right";
+                case '2':
+                    return "up";
+                case '3':
+                    return "down";
+                default:
+                    return "";
+            }
+        }
+
+        public void JoinGame()
+        {
+            string json = model.JoinGame();
+
+            Maze maze = JsonConvert.DeserializeObject<Maze>(json);
+
+            Maze = maze;
+            Rows = maze.Rows;
+            Cols = maze.Cols;
+            InitialPos = maze.InitialPos;
+            GoalPos = maze.GoalPos;
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace ex2
 
             WriteData(data);
             result = ReadData();
-            CloseConnection();
+            //CloseConnection();
 
             return result;
         }

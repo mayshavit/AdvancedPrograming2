@@ -1,0 +1,17 @@
+﻿<Window x:Class="ex2.View.MazeGUI.MultiPlayerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:ex2.View.MazeGUI.Controls"
+        mc:Ignorable="d" Height="580" Width="940"
+        WindowStartupLocation="CenterScreen" Title="{Binding MazeName}"
+        Closing="Window_Closing">
+
+    <Canvas>
+        <Button Content="Button" Width="75" Canvas.Left="427" Canvas.Top="34"/>
+        <controls:MazeBoard x:Name="myBoard" Canvas.Left="10" Canvas.Top="86"/>
+        <controls:MazeBoard x:Name="otherBoard" Canvas.Left="471" Canvas.Top="86"/>
+    </Canvas>
+
+</Window>

@@ -16,7 +16,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="MultiPlayerButton" Content="Multi Player" Canvas.Left="197" Canvas.Top="158" Height="32" Width="110" HorizontalAlignment="Right" FontWeight="Bold" BorderBrush="#FF070038" Foreground="#FF120B86" OpacityMask="Black" RenderTransformOrigin="0.5,0.5">
+        <Button x:Name="MultiPlayerButton" Content="Multi Player" Canvas.Left="197" Canvas.Top="158" Height="32" Width="110" HorizontalAlignment="Right" FontWeight="Bold" BorderBrush="#FF070038" Foreground="#FF120B86" OpacityMask="Black" RenderTransformOrigin="0.5,0.5" Click="MultiPlayerButton_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>

@@ -36,7 +36,7 @@ namespace ex2
             return reader.ReadString();
         }
 
-        protected void CloseConnection()
+        public void CloseConnection()
         {
             player.Close();
         }
