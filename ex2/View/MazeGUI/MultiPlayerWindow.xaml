@@ -9,9 +9,12 @@
         Closing="Window_Closing">
 
     <Canvas>
-        <Button Content="Button" Width="75" Canvas.Left="427" Canvas.Top="34"/>
+        <Button Canvas.Left="408" Canvas.Top="27" FontWeight="Bold" Click="Button_Click">Back to main menu</Button>
         <controls:MazeBoard x:Name="myBoard" Canvas.Left="10" Canvas.Top="86"/>
         <controls:MazeBoard x:Name="otherBoard" Canvas.Left="471" Canvas.Top="86"/>
+        <TextBlock Canvas.Left="10" Canvas.Top="62" FontSize="16" FontWeight="Bold" Foreground="#FF2471D3">My board</TextBlock>
+        <TextBlock Canvas.Left="471" Canvas.Top="62" FontSize="16" FontWeight="Bold" 
+                   Foreground="#FF1CBD47">Other's player board</TextBlock>
     </Canvas>
 
 </Window>

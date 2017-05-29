@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ex2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" Background="White">
+        Title="MainWindow" Height="350" Width="525"
+        Closing="Window_Closing">
     <Canvas HorizontalAlignment="Left" Height="323" VerticalAlignment="Top" Width="515" Margin="0,0,0,-0.6">
         <Button x:Name="SinglePlayerButton" Content="Single Player" Canvas.Left="197" Canvas.Top="110" Height="32" Width="110" HorizontalAlignment="Right" FontWeight="Bold" BorderBrush="#FF070038" Foreground="#FF120B86" OpacityMask="Black" RenderTransformOrigin="0.5,0.5" Click="SinglePlayerButton_Click">
             <Button.Background>

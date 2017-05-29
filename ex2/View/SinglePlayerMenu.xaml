@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:ex2"
         mc:Ignorable="d"
-        Title="SinglePlayerMenu" Height="175" Width="300"
+        Title="SinglePlayerMenu" Height="190" Width="300"
         Closing="Window_Closing">
 
     <Grid>
         <controls:StartGameMenu x:Name="startMenu"/>
-        <Button x:Name="btnStart" HorizontalAlignment="Center" Margin="109,109,109.6,10.2" Padding="5" Click="btnStart_Click">Start Game</Button>
+        <Button x:Name="btnStart" HorizontalAlignment="Center" Margin="109,119,109.6,10.4" Padding="5" Click="btnStart_Click">Start Game</Button>
     </Grid>
 
 </Window>

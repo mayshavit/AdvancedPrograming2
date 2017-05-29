@@ -9,15 +9,17 @@ using System.IO;
 
 namespace ex2
 {
-    abstract class Player
+    class Player
     {
         private TcpClient player;
         private BinaryReader reader;
         private BinaryWriter writer;
-        private bool closeConnection;
 
-
-
+        /// <summary>
+        /// Connects to server.
+        /// </summary>
+        /// <param name="ip">The ip.</param>
+        /// <param name="port">The port.</param>
         public void ConnectToServer(string ip, int port)
         {
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ip), port);
@@ -27,25 +29,48 @@ namespace ex2
             NetworkStream stream = player.GetStream();
             reader = new BinaryReader(stream);
             writer = new BinaryWriter(stream);
-            closeConnection = false;
         }
 
+        /// <summary>
+        /// Writes the data.
+        /// </summary>
+        /// <param name="data">The data.</param>
         public void WriteData(string data)
         {
             writer.Write(data);
         }
 
+        /// <summary>
+        /// Reads the data.
+        /// </summary>
+        /// <returns></returns>
         public string ReadData()
         {
             return reader.ReadString();
         }
 
+        /// <summary>
+        /// Closes the connection.
+        /// </summary>
         public void CloseConnection()
         {
             player.Close();
         }
 
 
-        public abstract string ReadAndWriteToServer(string data);
+        /// <summary>
+        /// Reads the and write to server.
+        /// </summary>
+        /// <param name="data">The data.</param>
+        /// <returns></returns>
+        public string ReadAndWriteToServer(string data)
+        {
+            string result;
+
+            WriteData(data);
+            result = ReadData();
+
+            return result;
+        }
     }
 }

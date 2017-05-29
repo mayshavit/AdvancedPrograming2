@@ -10,11 +10,21 @@ namespace ex2
     {
         string name;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameName"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
         public GameName(string name)
         {
             this.name = name;
         }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>
+        /// The name.
+        /// </value>
         public string Name
         {
             get { return name; }
@@ -30,6 +40,10 @@ namespace ex2
     {
         public bool Connected { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PlayerConnectedEventArgs"/> class.
+        /// </summary>
+        /// <param name="connected">if set to <c>true</c> [connected].</param>
         public PlayerConnectedEventArgs(bool connected)
         {
             Connected = connected;
@@ -40,6 +54,10 @@ namespace ex2
     {
         public string Move { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PlayerMovedEventArgs"/> class.
+        /// </summary>
+        /// <param name="move">The move.</param>
         public PlayerMovedEventArgs(string move)
         {
             Move = move;

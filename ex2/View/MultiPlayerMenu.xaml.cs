@@ -23,6 +23,9 @@ namespace ex2
         private List<GameName> games;
         private string game;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MultiPlayerMenu"/> class.
+        /// </summary>
         public MultiPlayerMenu()
         {
             InitializeComponent();
@@ -32,18 +35,22 @@ namespace ex2
             listOfMazes.ItemsSource = games;
         }
 
-        /*public List<GameName> GameNames
-        {
-            get { return games; }
-            set { games = value; }
-        }*/
-
+        /// <summary>
+        /// Handles the Closing event of the Window control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.ComponentModel.CancelEventArgs"/> 
+        /// instance containing the event data.</param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Window window = Application.Current.MainWindow;
-            window.Close();
+            window.Show();
+            this.Hide();
         }
 
+        /// <summary>
+        /// Lists the of games.
+        /// </summary>
         public void ListOfGames()
         {
             GameModel model = new GameModel();
@@ -57,19 +64,29 @@ namespace ex2
             {
                 games.Add(new GameName(names[i]));
             }
-
-            //GameNames = names;
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnStartGame control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void btnStartGame_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.MessageBox.Show("waiting for another player...", "Start Game");
+            System.Windows.Forms.MessageBox.Show("waiting for another player...", 
+                "Start Game", System.Windows.Forms.MessageBoxButtons.OK);
             View.MazeGUI.MultiPlayerWindow window = new View.MazeGUI.MultiPlayerWindow();
-            window.Update(startMenu.txtMazeName.Text, int.Parse(startMenu.txtRows.Text), int.Parse(startMenu.txtCols.Text), true);
+            window.Update(startMenu.txtMazeName.Text, int.Parse(startMenu.txtRows.Text), 
+                int.Parse(startMenu.txtCols.Text), true);
             window.Show();
             this.Hide();
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnJoin control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void btnJoin_Click(object sender, RoutedEventArgs e)
         {
             View.MazeGUI.MultiPlayerWindow window = new View.MazeGUI.MultiPlayerWindow();
@@ -78,6 +95,11 @@ namespace ex2
             this.Hide();
         }
 
+        /// <summary>
+        /// Handles the SelectionChanged event of the listOfMazes control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
         private void listOfMazes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.game = listOfMazes.Text;

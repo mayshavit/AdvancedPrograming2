@@ -21,72 +21,112 @@ namespace ex2
 
         public event EventHandler<PlayerMovedEventArgs> MoveOtherPlayer;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SingleGameViewModel"/> class.
+        /// </summary>
+        /// <param name="model">The model.</param>
         public SingleGameViewModel(GameModel model)
         {
             this.model = model;
             this.model.OtherPlayerMoved += RaiseEvent;
         }
 
+        /// <summary>
+        /// Gets or sets the maze.
+        /// </summary>
+        /// <value>
+        /// The maze.
+        /// </value>
         public Maze Maze
         {
             get { return model.Maze; }
             set
             {
-                //maze = value;
                 model.Maze = value;
                 maze = value;
                 NotifyPropertyChanged("Maze");
             }
         }
 
+        /// <summary>
+        /// Gets or sets the name of the maze.
+        /// </summary>
+        /// <value>
+        /// The name of the maze.
+        /// </value>
         public string MazeName
         {
             get { return model.MazeName; }
             set
             {
-                //name = value;
                 model.MazeName = value;
                 name = value;
                 NotifyPropertyChanged("MazeName");
             }
         }
 
+        /// <summary>
+        /// Gets or sets the rows.
+        /// </summary>
+        /// <value>
+        /// The rows.
+        /// </value>
         public int Rows
         {
             get { return model.Rows; }
             set
             {
-                //rows = value;
                 model.Rows = value;
                 rows = value;
                 NotifyPropertyChanged("Rows");
             }
         }
 
+        /// <summary>
+        /// Gets or sets the cols.
+        /// </summary>
+        /// <value>
+        /// The cols.
+        /// </value>
         public int Cols
         {
             get { return model.Cols; }
             set
             {
-                //cols = value;
                 model.Cols = value;
                 cols = value;
                 NotifyPropertyChanged("Cols");
             }
         }
 
+        /// <summary>
+        /// Gets or sets the initial position.
+        /// </summary>
+        /// <value>
+        /// The initial position.
+        /// </value>
         public Position InitialPos
         {
             get { return initialPos; }
             set { initialPos = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the goal position.
+        /// </summary>
+        /// <value>
+        /// The goal position.
+        /// </value>
         public Position GoalPos
         {
             get { return goalPos; }
             set { goalPos = value; }
         }
 
+        /// <summary>
+        /// Starts the game.
+        /// </summary>
+        /// <param name="multi">if set to <c>true</c> [multi].</param>
         public void StartGame(bool multi)
         {
             string json;
@@ -99,22 +139,16 @@ namespace ex2
                 json = model.StartGame();
             }
 
-            //maze = JsonConvert.DeserializeObject<Maze>(json);
-            //Maze = Json.JsonParser.Deserialize(json);
-            //Maze = JsonParser.Deserialize<Maze>(json);
-            //Maze = JsonConvert.DeserializeObject(json);
             Maze = Maze.FromJSON(json);
             InitialPos = Maze.InitialPos;
             GoalPos = Maze.GoalPos;
         }
 
-        /*public void Update(string name2, int rows2, int cols2)
-        {
-            //name = name2;
-            rows = rows2;
-            cols = cols2;
-        }*/
 
+        /// <summary>
+        /// Solves the game.
+        /// </summary>
+        /// <returns></returns>
         public List<string> SolveGame()
         {
             List<string> directionList = new List<string>();
@@ -132,6 +166,11 @@ namespace ex2
             return directionList;
         }
 
+        /// <summary>
+        /// Directions the string.
+        /// </summary>
+        /// <param name="c">The c.</param>
+        /// <returns></returns>
         private string DirectionString(char c)
         {
             switch (c)
@@ -149,11 +188,14 @@ namespace ex2
             }
         }
 
+        /// <summary>
+        /// Joins the game.
+        /// </summary>
         public void JoinGame()
         {
             string json = model.JoinGame();
 
-            Maze maze = Maze.FromJSON(json); //JsonConvert.DeserializeObject<Maze>(json);
+            Maze maze = Maze.FromJSON(json);
 
             Maze = maze;
             Rows = maze.Rows;
@@ -162,11 +204,21 @@ namespace ex2
             GoalPos = maze.GoalPos;
         }
 
+        /// <summary>
+        /// Moves the specified move.
+        /// </summary>
+        /// <param name="move">The move.</param>
         public void Move(string move)
         {
             model.WriteMove(move);
         }
 
+        /// <summary>
+        /// Raises the event.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="PlayerMovedEventArgs"/> 
+        /// instance containing the event data.</param>
         private void RaiseEvent(object sender, PlayerMovedEventArgs e)
         {
             JMove jMove = JsonConvert.DeserializeObject<JMove>(e.Move);
@@ -174,9 +226,12 @@ namespace ex2
             MoveOtherPlayer?.Invoke(this, new PlayerMovedEventArgs(jMove.Direction));
         }
 
+        /// <summary>
+        /// Closes the game.
+        /// </summary>
         public void CloseGame()
         {
-
+            model.CloseGame();
         }
     }
 }

@@ -21,6 +21,9 @@ namespace ex2
     public partial class StartGameMenu : UserControl
     {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StartGameMenu"/> class.
+        /// </summary>
         public StartGameMenu()
         {
             InitializeComponent();

@@ -21,6 +21,9 @@ namespace ex2
     {
         private SettingsViewModel vm;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SettingsWindow"/> class.
+        /// </summary>
         public SettingsWindow()
         {
             InitializeComponent();
@@ -28,26 +31,43 @@ namespace ex2
             this.DataContext = vm;
         }
 
+        /// <summary>
+        /// Handles the Closing event of the Window control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.ComponentModel.CancelEventArgs"/> 
+        /// instance containing the event data.</param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Window window = Application.Current.MainWindow;
-            window.Close();
+            SwitchToMainWindow();
         }
 
+        /// <summary>
+        /// Switches to main window.
+        /// </summary>
         private void SwitchToMainWindow()
         {
-            MainWindow win = (MainWindow)Application.Current.MainWindow;
+            Window win = Application.Current.MainWindow;
             win.Show();
-            //this.Close();
             this.Hide();
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnOK control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
             vm.SaveSettings();
             SwitchToMainWindow();
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnCancel control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             SwitchToMainWindow();

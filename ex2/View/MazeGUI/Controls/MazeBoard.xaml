@@ -9,7 +9,7 @@
 
     <Viewbox>
         <Border BorderBrush="Black" BorderThickness="3">
-            <Canvas x:Name="myCanvas" Width="450" Height="450"> 
+            <Canvas x:Name="myCanvas" Width="450" Height="450">
             </Canvas>
         </Border>
     </Viewbox>

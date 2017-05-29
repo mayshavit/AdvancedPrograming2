@@ -19,23 +19,38 @@ namespace ex2
     /// </summary>
     public partial class SinglePlayerMenu : Window
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SinglePlayerMenu"/> class.
+        /// </summary>
         public SinglePlayerMenu()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Handles the Closing event of the Window control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.ComponentModel.CancelEventArgs"/> 
+        /// instance containing the event data.</param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Window window = Application.Current.MainWindow;
-            window.Close();
+            window.Show();
+            this.Hide();
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnStart control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> 
+        /// instance containing the event data.</param>
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            //string s = txtMazeName.Text;
             View.MazeGUI.SinglePlayerWindow window = new View.MazeGUI.SinglePlayerWindow();
-            //window.CreateModel(txtMazeName.Text, int.Parse(txtRows.Text), int.Parse(txtCols.Text));
-            window.Update(startMenu.txtMazeName.Text, int.Parse(startMenu.txtRows.Text), int.Parse(startMenu.txtCols.Text));
+            window.Update(startMenu.txtMazeName.Text, int.Parse(startMenu.txtRows.Text), 
+                int.Parse(startMenu.txtCols.Text));
             window.Show();
             this.Hide();
         }

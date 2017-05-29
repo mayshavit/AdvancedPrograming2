@@ -45,5 +45,12 @@ namespace ex2
             menu.ShowDialog();
             this.Hide();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //Window window = Application.Current.MainWindow;
+            //window.Close();
+            //this.Close();
+        }
     }
 }
