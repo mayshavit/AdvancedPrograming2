@@ -15,7 +15,7 @@ namespace Server
     {
         private IModel model;
         private Dictionary<string, ICommand> commands;
-        //private Dictionary<string, Maze> mazes;
+        //private Dictionary<string, Maze> mazes;//
         //private Dictionary<string, Solution<Position>> solutions;
         private Dictionary<string, SingleGame> singleGames;
         //private Dictionary<string, MultiGame> games;
