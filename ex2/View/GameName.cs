@@ -8,7 +8,7 @@ namespace ex2
 {
     public class GameName
     {
-        string name;
+        string name;//
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameName"/> class.
