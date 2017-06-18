@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.3
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServerAndClient", "TcpServerAndClient\TcpServerAndClient.csproj", "{F07F76E8-9044-4684-8219-D0E8CBA28952}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client2", "Client2\Client2.csproj", "{A95D1DB3-F28D-427C-92C3-B3A314329920}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ex2", "ex2\ex2.csproj", "{2FF5AED7-8D86-43BC-BE5F-0C2EB8B56001}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebServerAndClient", "WebServerAndClient\WebServerAndClient.csproj", "{9EE4C6F5-41E9-4369-8ACD-51FB918A2D22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +87,14 @@ Global
 		{2FF5AED7-8D86-43BC-BE5F-0C2EB8B56001}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2FF5AED7-8D86-43BC-BE5F-0C2EB8B56001}.Release|x64.ActiveCfg = Release|x64
 		{2FF5AED7-8D86-43BC-BE5F-0C2EB8B56001}.Release|x64.Build.0 = Release|x64
+		{9EE4C6F5-41E9-4369-8ACD-51FB918A2D22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EE4C6F5-41E9-4369-8ACD-51FB918A2D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EE4C6F5-41E9-4369-8ACD-51FB918A2D22}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9EE4C6F5-41E9-4369-8ACD-51FB918A2D22}.Debug|x64.Build.0 = Debug|Any CPU
+		{9EE4C6F5-41E9-4369-8ACD-51FB918A2D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EE4C6F5-41E9-4369-8ACD-51FB918A2D22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EE4C6F5-41E9-4369-8ACD-51FB918A2D22}.Release|x64.ActiveCfg = Release|Any CPU
+		{9EE4C6F5-41E9-4369-8ACD-51FB918A2D22}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
